@@ -7,7 +7,6 @@ const usersRouter = express.Router();
 usersRouter.get("/", async (req, res) => {
   const { name } = req.query;
   try {
-    console.log('Query Param', name);
     const query = name ? { name: { '$regex': name } } : {};
     const users = await userModel.find(query, { _id: 0, __v: 0 });
     res.send(users);
